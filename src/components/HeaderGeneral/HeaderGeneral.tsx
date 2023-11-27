@@ -20,7 +20,7 @@ function HeaderGeneral({ collapsed, setCollapsed }: Readonly<HeaderGeneralProps>
   }
   const role = useSelector((state: RootState) => state.userReducer.role)
   const titlePage = useSelector((state: RootState) => state.appReducer.titlePage)
-  let btn_collapsed = ''
+  let btn_collapsed: string = ''
   switch (role) {
     case 'student':
       btn_collapsed = 'student_header_btn_collapsed'

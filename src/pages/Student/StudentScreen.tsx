@@ -1,6 +1,6 @@
 import '../../scss/_layout.scss'
 import { useState } from 'react'
-import StudentSidebar from './StudentSibar'
+import StudentSidebar from './StudentSidebar'
 import RegisterThesis from './RegisterThesis/RegisterThesis'
 import ImplementThesis from './ImplementThesis/ImplementThesis'
 import HeaderGeneral from '../../components/HeaderGeneral/HeaderGeneral'
