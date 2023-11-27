@@ -1,0 +1,62 @@
+@import '../../../scss/responsive';
+
+.login__screen {
+  background: var(--login-bg);
+  height: 100vh;
+  width: 100%;
+  padding-top: 10vh;
+  & .login__screen__container {
+    margin: 0 auto;
+    width: 900px;
+    background: var(--primary-bg);
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 15px 16.83px 0.17px;
+    border-radius: 20px;
+    & .loginscreen__infor {
+      img {
+        width: 300px;
+        height: auto;
+        transition: 0.3s ease;
+      }
+
+      & .loginscreen__form {
+        min-width: 300px !important;
+        text-align: center;
+        h1 {
+          font-weight: bold;
+          text-align: center;
+          font-size: 2.7rem !important;
+          transition: 0.3s ease;
+        }
+      }
+    }
+
+    @include respond(sm) {
+      & .loginscreen__infor {
+        img {
+          width: 150px !important;
+        }
+      }
+    }
+  }
+
+  @include respond(lg) {
+    & .login__screen__container {
+      width: auto !important;
+      max-width: 500px;
+
+      & .loginscreen__infor {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px !important;
+        img {
+          width: 200px !important;
+        }
+
+        & .loginscreen__form {
+          max-width: 300px !important;
+          min-width: max-content;
+        }
+      }
+    }
+  }
+}
