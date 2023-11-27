@@ -38,32 +38,30 @@ function App() {
     }
   }, [isLoggedIn, navigate])
   return (
-    <>
-      <Routes>
+    <Routes>
+      <Route
+        path='/homepage'
+        element={
+          <>
+            <Navbar />
+            <Homepage />
+          </>
+        }
+      />
+      <Route path='/login_delegation' element={<LoginDelegationScreen />} />
+      <Route path='/login' element={<LoginScreen />} />
+      {isLoggedIn ? (
         <Route
-          path='/homepage'
+          path='*'
           element={
             <>
               <Navbar />
-              <Homepage />
+              {getScreenComponentByRole(role)}
             </>
           }
         />
-        <Route path='/login_delegation' element={<LoginDelegationScreen />} />
-        <Route path='/login' element={<LoginScreen />} />
-        {isLoggedIn ? (
-          <Route
-            path='*'
-            element={
-              <>
-                <Navbar />
-                {getScreenComponentByRole(role)}
-              </>
-            }
-          />
-        ) : null}
-      </Routes>
-    </>
+      ) : null}
+    </Routes>
   )
 }
 
