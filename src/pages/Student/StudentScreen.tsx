@@ -31,7 +31,7 @@ function StudentScreen() {
         <Content className='layout__content'>
           <Routes>
             <Route path='/' element={<StudentHomepage />} />
-            <Route path='/student/registertopic' element={<RegisterThesis />} />
+            <Route path='/student/registerthesis' element={<RegisterThesis />} />
             <Route path='/student/implement_topic' element={<ImplementThesis />} />
           </Routes>
         </Content>

@@ -1,0 +1,4 @@
+export const thesisConstants = {
+  SAVE_INFOR_ADVISORS: 'SAVE_INFOR_ADVISORS',
+  SAVE_INFOR_STUDENTS: 'SAVE_INFOR_STUDENTS'
+}
