@@ -1,32 +1,68 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect } from 'react'
 import './App.css'
-
+import { useSelector } from 'react-redux'
+import { Route, Routes, useNavigate } from 'react-router-dom'
+import Navbar from './components/Navbar/Navbar'
+import Homepage from './pages/Homepage/Homepage'
+import LoginScreen from './pages/Auth/LoginScreen/LoginScreen'
+import LoginDelegationScreen from './pages/Auth/LoginDelegationScreen/LoginDelegationScreen'
+import StudentScreen from './pages/Student/StudentScreen'
+import AdvisorScreen from './pages/Advisor/AdvisorScreen'
 function App() {
-  const [count, setCount] = useState(0)
+  const navigate = useNavigate()
+  interface RootState {
+    userReducer: {
+      role: string
+      loggedIn: boolean
+    }
+  }
+  const role = useSelector((state: RootState) => state.userReducer.role)
+  const isLoggedIn = useSelector((state: RootState) => state.userReducer.loggedIn)
+  function getScreenComponentByRole(role: string) {
+    switch (role) {
+      case 'student':
+        return <StudentScreen />
+      case 'advisor':
+        return <AdvisorScreen />
+      case 'council':
+        return <AdvisorScreen />
+      case 'secretary':
+        return <AdvisorScreen />
+      default:
+        return <StudentScreen />
+    }
+  }
+  useEffect(() => {
+    if (isLoggedIn === false || isLoggedIn === null) {
+      navigate('/homepage')
+    }
+  }, [isLoggedIn, navigate])
   return (
     <>
-      <div>
-        <a href='https://vitejs.dev' target='_blank'>
-          <img src={viteLogo} className='logo' alt='Vite logo' />
-        </a>
-        <a href='https://react.dev' target='_blank'>
-          <img src={reactLogo} className='logo react' alt='React logo' />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className='card'>
-        <button onClick={() => setCount(count => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className='read-the-docs'>
-        Click on the Vite and React logos to learn more
-      </p>
+      <Routes>
+        <Route
+          path='/homepage'
+          element={
+            <>
+              <Navbar />
+              <Homepage />
+            </>
+          }
+        />
+        <Route path='/login_delegation' element={<LoginDelegationScreen />} />
+        <Route path='/login' element={<LoginScreen />} />
+        {isLoggedIn ? (
+          <Route
+            path='*'
+            element={
+              <>
+                <Navbar />
+                {getScreenComponentByRole(role)}
+              </>
+            }
+          />
+        ) : null}
+      </Routes>
     </>
   )
 }
