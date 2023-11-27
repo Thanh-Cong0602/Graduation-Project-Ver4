@@ -36,7 +36,8 @@ function App() {
     if (isLoggedIn === false || isLoggedIn === null) {
       navigate('/homepage')
     }
-  }, [isLoggedIn, navigate])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoggedIn])
   return (
     <Routes>
       <Route
