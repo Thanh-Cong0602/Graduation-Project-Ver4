@@ -1,4 +1,4 @@
-import './LoginScreen.scss'
+import './LoginPage.scss'
 import logo_hcmut from '../../../assets/hcmut.png'
 import { LockOutlined, UserOutlined } from '@ant-design/icons'
 import { Button, Form, Input, Flex } from 'antd'

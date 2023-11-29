@@ -1,4 +1,4 @@
-import './LoginDelegationScreen.scss'
+import './LoginDelegationPage.scss'
 import { Button, Space } from 'antd'
 import logo_hcmut from '../../../assets/hcmut.png'
 import { useNavigate } from 'react-router-dom'
