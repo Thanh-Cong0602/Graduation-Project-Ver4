@@ -5,6 +5,7 @@ interface UserState {
   userName: string | null
   role: string | null
   loggedIn: boolean | null
+  token: string | null
 }
 
 interface UserAction {
@@ -16,7 +17,8 @@ const initialState: UserState = {
   userId: null,
   userName: null,
   role: null,
-  loggedIn: false
+  loggedIn: false,
+  token: null
 }
 
 export function userReducer(state: UserState = initialState, action: UserAction): UserState {
@@ -30,6 +32,16 @@ export function userReducer(state: UserState = initialState, action: UserAction)
       return {
         ...state,
         loggedIn: action.payload
+      }
+    case userConstants.SET_TOKEN_LOGGED_IN:
+      return {
+        ...state,
+        token: action.payload
+      }
+    case userConstants.SET_USER_ID:
+      return {
+        ...state,
+        userId: action.payload
       }
     default:
       return state

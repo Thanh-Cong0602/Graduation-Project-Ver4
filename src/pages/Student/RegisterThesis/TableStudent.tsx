@@ -16,13 +16,13 @@ function TableStudent() {
   const handleInsertStudent = () => {
     setIsInsertStudent(true)
   }
-  const handleDelete = (uuid: string) => {
+  const handleDelete = (uuid: string | undefined) => {
     const newDataSource = students?.filter(item => item.uuid !== uuid)
     setStudents(newDataSource)
     setCountStudent(countStudent - 1)
   }
   const onSearchStudentWithKey: SearchProps['onSearch'] = (_value: string) => {
-    getStudentByStudentID(`student/MSSV/${_value}`)
+    getStudentByStudentID(`student/code/${_value}`)
       .then(res => {
         const newStudent: StudentType = { ...res.data.data, key: countStudent + 1 }
         setStudents([...students, newStudent])
@@ -139,7 +139,7 @@ function TableStudent() {
                 <div>
                   <ul>
                     <li>
-                      <p style={{ margin: 0 }}>MSSV: {record.MSSV}</p>
+                      <p style={{ margin: 0 }}>MSSV: {record.code}</p>
                     </li>
                     <li>
                       <p style={{ margin: 0 }}>Họ và tên: {record.fullName}</p>

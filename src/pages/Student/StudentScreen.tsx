@@ -5,6 +5,7 @@ import RegisterThesis from './RegisterThesis/RegisterThesis'
 import ImplementThesis from './ImplementThesis/ImplementThesis'
 import HeaderGeneral from '../../components/HeaderGeneral/HeaderGeneral'
 import StudentHomepage from './StudentHomepage/StudentHomepage'
+import ListOfTheses from './ListOfTheses/ListOfTheses'
 import { Routes, Route } from 'react-router-dom'
 import { Layout } from 'antd'
 const { Content } = Layout
@@ -32,6 +33,7 @@ function StudentScreen() {
           <Routes>
             <Route path='/' element={<StudentHomepage />} />
             <Route path='/student/registerthesis' element={<RegisterThesis />} />
+            <Route path='/student/listoftheses' element={<ListOfTheses />} />
             <Route path='/student/implement_topic' element={<ImplementThesis />} />
           </Routes>
         </Content>

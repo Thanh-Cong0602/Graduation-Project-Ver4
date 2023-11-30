@@ -1,6 +1,6 @@
 interface AdvisorType {
   key?: React.Key
-  uuid: string
+  uuid?: string
   MSCB?: string
   firstName?: string
   lastName?: string

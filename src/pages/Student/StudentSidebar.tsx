@@ -11,9 +11,15 @@ import {
 import { Layout, Menu } from 'antd'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { setLoggedIn, setTitlePage, setSelectedKey } from '../../redux/_actions'
+import {
+  setLoggedIn,
+  setTitlePage,
+  setSelectedKey,
+  setTokenLoggedIn,
+  setUserId
+} from '../../redux/_actions'
 const { Sider } = Layout
-
+import { logoutAPI } from '../../Api/Service/auth.service'
 interface StudentSidebarProps {
   collapsed: boolean
   setCollapsed: React.Dispatch<React.SetStateAction<boolean>>
@@ -33,6 +39,9 @@ function StudentSidebar({ collapsed, setCollapsed }: Readonly<StudentSidebarProp
     dispatch(setSelectedKey('1'))
     dispatch(setTitlePage('Trang chủ hệ thống'))
     dispatch(setLoggedIn(false))
+    dispatch(setUserId(''))
+    dispatch(setTokenLoggedIn(''))
+    logoutAPI('logout')
   }
   return (
     <div>
@@ -102,13 +111,13 @@ function StudentSidebar({ collapsed, setCollapsed }: Readonly<StudentSidebarProp
               icon: <FormOutlined />,
               label: (
                 <Link
-                  to='/student/registertopic'
+                  to='/student/listoftheses'
                   onClick={() => {
                     dispatch(setSelectedKey('4'))
-                    handleSetTitleHeader('Yêu cầu phát sinh')
+                    handleSetTitleHeader('Danh sách đề tài')
                   }}
                 >
-                  Yêu cầu phát sinh
+                  Danh sách đề tài
                 </Link>
               )
             },

@@ -1,16 +1,16 @@
-import { Drawer } from "antd";
+import { Drawer } from 'antd'
 function Conversation({ setOpenConversation, openConversation }: any) {
   const onClose = () => {
-    setOpenConversation(false);
-  };
+    setOpenConversation(false)
+  }
   return (
     <div>
       <Drawer
         width={330}
         zIndex={50}
         style={{ marginTop: 60 }}
-        title="Tin nhắn"
-        placement="right"
+        title='Tin nhắn'
+        placement='right'
         onClose={onClose}
         open={openConversation}
       >
@@ -19,7 +19,7 @@ function Conversation({ setOpenConversation, openConversation }: any) {
         <p>Some contents...</p>
       </Drawer>
     </div>
-  );
+  )
 }
 
-export default Conversation;
+export default Conversation

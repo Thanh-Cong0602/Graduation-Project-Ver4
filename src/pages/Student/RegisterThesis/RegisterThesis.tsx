@@ -5,8 +5,9 @@ import { DeleteTwoTone, PlusOutlined } from '@ant-design/icons'
 import TableAdvisor from './TableAdvisor'
 import TableStudent from './TableStudent'
 import type { FormInstance } from 'antd'
-import { createThesis } from '../../../Api/Service/thesis.service'
-import { useSelector } from 'react-redux'
+import { createThesisAPI } from '../../../Api/Service/thesis.service'
+import { useSelector, useDispatch } from 'react-redux'
+import { saveInforAdvisors, saveInforStudents } from '../../../redux/_actions/thesis.action'
 import ThesisType from '../../../types/ThesisType'
 import StudentType from '../../../types/StudentType'
 import AdvisorType from '../../../types/AdvisorType'
@@ -31,6 +32,7 @@ const SubmitButton = ({ form }: { form: FormInstance }) => {
 }
 
 function RegisterThesis() {
+  const dispatch = useDispatch()
   const [form] = Form.useForm()
   const [messageApi, contextHolder] = message.useMessage()
   interface RootState {
@@ -55,23 +57,24 @@ function RegisterThesis() {
         user_role_owner: 0,
         thesis_info: values.thesis_info,
         thesis_task: [],
-        students: students.map((student: { uuid: string }) => ({
-          status: true,
+        students: students.map((student) => ({
           uuid: student.uuid
         })),
-        advisors: advisors.map((advisor: { uuid: string }) => ({
+        advisors: advisors.map((advisor) => ({
           uuid: advisor.uuid
         })),
         missions: values.missions
       }
     ]
-    createThesis('thesis', requiredFields)
+    createThesisAPI('thesis', requiredFields)
       .then(res => {
         const messageSuccess = res.data.message
         messageApi.open({
           type: 'success',
           content: messageSuccess
         })
+        dispatch(saveInforAdvisors([]))
+        dispatch(saveInforStudents([]))
       })
       .catch(err => {
         const messageError = err.response.message

@@ -76,8 +76,9 @@ function Navbar() {
                 />
               </Flex>
             ) : (
-              <div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <Link to={'/login_delegation'}>Đăng nhập</Link>
+                <Link to={'/register'}>Đăng ký</Link>
               </div>
             )}
           </div>

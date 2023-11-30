@@ -6,6 +6,7 @@ import Navbar from './components/Navbar/Navbar'
 import Homepage from './pages/Homepage/Homepage'
 import LoginPage from './pages/Auth/LoginPage/LoginPage'
 import LoginDelegationPage from './pages/Auth/LoginDelegationPage/LoginDelegationPage'
+import RegisterPage from './pages/Auth/RegisterPage/RegisterPage'
 import StudentScreen from './pages/Student/StudentScreen'
 import AdvisorScreen from './pages/Advisor/AdvisorScreen'
 function App() {
@@ -51,6 +52,7 @@ function App() {
       />
       <Route path='/login_delegation' element={<LoginDelegationPage />} />
       <Route path='/login' element={<LoginPage />} />
+      <Route path='/register' element={<RegisterPage />} />
       {isLoggedIn ? (
         <Route
           path='*'

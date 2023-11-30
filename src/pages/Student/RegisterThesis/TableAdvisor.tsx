@@ -51,7 +51,7 @@ function TableAdvisor() {
       setSelectedValue('Tìm kiếm thông tin CBHD')
     }
   }
-  const handleDelete = (uuid: string) => {
+  const handleDelete = (uuid: string | undefined) => {
     const newDataSource = dataSource?.filter(item => item.uuid !== uuid)
     setDataSource(newDataSource)
     setCountAdvisor(countAdvisor - 1)

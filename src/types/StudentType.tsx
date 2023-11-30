@@ -1,7 +1,7 @@
 interface StudentType {
   key?: React.Key
-  uuid: string
-  MSSV?: string
+  uuid?: string
+  code?: string
   firstName?: string
   lastName?: string
   fullName?: string
@@ -9,11 +9,13 @@ interface StudentType {
   address?: string
   gender?: string
   phoneNumber?: string
+  role?: number
   birthday?: string
   username?: string
   password?: string
+  passwordConfirm?: string
   image?: string
-  status: boolean
+  status?: boolean
 }
 
 export default StudentType
