@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux'
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar'
 import Homepage from './pages/Homepage/Homepage'
-import LoginPage from './pages/Auth/LoginPage/LoginPage'
-import LoginDelegationPage from './pages/Auth/LoginDelegationPage/LoginDelegationPage'
+import LoginScreen from './pages/Auth/LoginScreen/LoginScreen'
+import LoginDelegationScreen from './pages/Auth/LoginDelegationScreen/LoginDelegationScreen'
 import StudentScreen from './pages/Student/StudentScreen'
 import AdvisorScreen from './pages/Advisor/AdvisorScreen'
 function App() {
@@ -36,33 +36,34 @@ function App() {
     if (isLoggedIn === false || isLoggedIn === null) {
       navigate('/homepage')
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoggedIn])
+  }, [isLoggedIn, navigate])
   return (
-    <Routes>
-      <Route
-        path='/homepage'
-        element={
-          <>
-            <Navbar />
-            <Homepage />
-          </>
-        }
-      />
-      <Route path='/login_delegation' element={<LoginDelegationPage />} />
-      <Route path='/login' element={<LoginPage />} />
-      {isLoggedIn ? (
+    <>
+      <Routes>
         <Route
-          path='*'
+          path='/homepage'
           element={
             <>
               <Navbar />
-              {getScreenComponentByRole(role)}
+              <Homepage />
             </>
           }
         />
-      ) : null}
-    </Routes>
+        <Route path='/login_delegation' element={<LoginDelegationScreen />} />
+        <Route path='/login' element={<LoginScreen />} />
+        {isLoggedIn ? (
+          <Route
+            path='*'
+            element={
+              <>
+                <Navbar />
+                {getScreenComponentByRole(role)}
+              </>
+            }
+          />
+        ) : null}
+      </Routes>
+    </>
   )
 }
 
