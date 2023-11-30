@@ -8,7 +8,8 @@
     "build": "tsc && vite build --base=./",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
@@ -16,6 +17,7 @@
     "@typescript-eslint/typescript-estree": "^7.0.0-alpha.0",
     "antd": "^5.11.4",
     "axios": "^1.6.2",
+    "date-fns": "^2.30.0",
     "prettier": "^3.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

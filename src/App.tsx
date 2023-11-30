@@ -4,8 +4,9 @@ import { useSelector } from 'react-redux'
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar'
 import Homepage from './pages/Homepage/Homepage'
-import LoginScreen from './pages/Auth/LoginScreen/LoginScreen'
-import LoginDelegationScreen from './pages/Auth/LoginDelegationScreen/LoginDelegationScreen'
+import LoginPage from './pages/Auth/LoginPage/LoginPage'
+import LoginDelegationPage from './pages/Auth/LoginDelegationPage/LoginDelegationPage'
+import RegisterPage from './pages/Auth/RegisterPage/RegisterPage'
 import StudentScreen from './pages/Student/StudentScreen'
 import AdvisorScreen from './pages/Advisor/AdvisorScreen'
 function App() {
@@ -36,34 +37,34 @@ function App() {
     if (isLoggedIn === false || isLoggedIn === null) {
       navigate('/homepage')
     }
-  }, [isLoggedIn, navigate])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoggedIn])
   return (
-    <>
-      <Routes>
+    <Routes>
+      <Route
+        path='/homepage'
+        element={
+          <>
+            <Navbar />
+            <Homepage />
+          </>
+        }
+      />
+      <Route path='/login_delegation' element={<LoginDelegationPage />} />
+      <Route path='/login' element={<LoginPage />} />
+      <Route path='/register' element={<RegisterPage />} />
+      {isLoggedIn ? (
         <Route
-          path='/homepage'
+          path='*'
           element={
             <>
               <Navbar />
-              <Homepage />
+              {getScreenComponentByRole(role)}
             </>
           }
         />
-        <Route path='/login_delegation' element={<LoginDelegationScreen />} />
-        <Route path='/login' element={<LoginScreen />} />
-        {isLoggedIn ? (
-          <Route
-            path='*'
-            element={
-              <>
-                <Navbar />
-                {getScreenComponentByRole(role)}
-              </>
-            }
-          />
-        ) : null}
-      </Routes>
-    </>
+      ) : null}
+    </Routes>
   )
 }
 

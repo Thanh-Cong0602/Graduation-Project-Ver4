@@ -1,0 +1,9 @@
+.registerPage {
+  text-align: center;
+  & .loginBtn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+  }
+}

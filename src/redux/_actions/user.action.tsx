@@ -1,12 +1,9 @@
 import { userConstants } from '../_constants/user.constant'
-interface UserType {
-  id: number
-  uername: string
-}
-export const setUser = (user: UserType) => {
+
+export const setUserId = (userId: string) => {
   return {
-    type: userConstants.SET_USER,
-    payload: user
+    type: userConstants.SET_USER_ID,
+    payload: userId
   }
 }
 
@@ -21,5 +18,12 @@ export const setLoggedIn = (LoggedIn: boolean) => {
   return {
     type: userConstants.SET_LOGGED_IN,
     payload: LoggedIn
+  }
+}
+
+export const setTokenLoggedIn = (token: string) => {
+  return {
+    type: userConstants.SET_TOKEN_LOGGED_IN,
+    payload: token
   }
 }
